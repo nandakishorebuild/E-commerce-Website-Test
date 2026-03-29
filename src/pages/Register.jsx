@@ -41,7 +41,7 @@ const Register = () => {
 
 
     try {
-      const response = await axios.post("http://localhost:5731/register", 
+      const response = await axios.post("https://e-commerce-website-test.onrender.com/register", 
   { username, email, password },
   { withCredentials: true }
 );
