@@ -10,14 +10,12 @@ import db from "./db.js";
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin || origin.includes("localhost")) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: [
+    "http://localhost:5173",
+    "https://e-commerce-website-test-2yiv-d6hrefiw0.vercel.app"
+  ],
   credentials: true
 }));
 
