@@ -28,7 +28,7 @@ app.post("/register", async (req, res) => {
 
     // Check all fields
     if (!username || !email || !password) {
-      return res.status(400).json({ message: "All fields required" });
+      return res.status(400).json({ message: "All fields required" }); // ✅ 400 OK
     }
 
     // Check username already exists
@@ -37,7 +37,7 @@ app.post("/register", async (req, res) => {
       [username]
     );
     if (existingUser.length > 0) {
-      return res.status(409).json({ message: "Username already taken" });
+      return res.status(409).json({ message: "Username already taken" }); // ✅ 409 OK
     }
 
     // Check email already exists
@@ -46,7 +46,7 @@ app.post("/register", async (req, res) => {
       [email]
     );
     if (existingEmail.length > 0) {
-      return res.status(409).json({ message: "Email already registered" });
+      return res.status(409).json({ message: "Email already registered" }); // ✅ 409 OK
     }
 
     // Hash password and save
@@ -56,11 +56,11 @@ app.post("/register", async (req, res) => {
       [username, email, hashedPassword]
     );
 
-    res.status(201).json({ message: "Registration successful" });
+    res.status(201).json({ message: "Registration successful" }); // ✅ CHANGED from 200 → 201
 
   } catch (err) {
     console.error("REGISTER ERROR:", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error" }); // ✅ 500 OK
   }
 });
 
@@ -105,11 +105,11 @@ app.post("/login", async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000
     });
 
-    res.json({ message: "Login successful" });
+    //res.json({ message: "Login successful" });
+    res.status(200).json({ message: "Login successful ✅", user });
 
   } catch (err) {
-    console.error("LOGIN ERROR:", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ error: "Login failed" });
   }
 });
 
