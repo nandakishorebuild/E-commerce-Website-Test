@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     axios
-      .post("http://localhost:5731/logout", {}, { withCredentials: true })
+      .post("https://e-commerce-website-test.onrender.com//logout", {}, { withCredentials: true })
       .then(() => navigate("/login"))
       .catch(() => alert("Logout failed"));
   };

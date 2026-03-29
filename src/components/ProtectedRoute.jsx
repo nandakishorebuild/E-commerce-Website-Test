@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5731/home", { withCredentials: true })
+      .get("https://e-commerce-website-test.onrender.com/home", { withCredentials: true })
       .then(() => setLoading(false))
       .catch(() => navigate("/login"));
   }, []);

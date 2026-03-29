@@ -45,7 +45,7 @@ const Products = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5731/home", {
+        const res = await axios.get("https://e-commerce-website-test.onrender.com/home", {
           withCredentials: true,
         });
         setUsername(res.data.username);
