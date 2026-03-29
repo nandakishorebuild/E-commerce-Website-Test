@@ -141,6 +141,8 @@ app.post("/logout", (req, res) => {
   res.json({ message: "Logout successful" });
 });
 
-app.listen(5731, () => {
-  console.log("Server running at http://localhost:5731");
+const PORT = process.env.PORT || 5731;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
