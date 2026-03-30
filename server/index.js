@@ -12,13 +12,11 @@ const app = express();
 
 // CORS (FIRST)
 app.use(cors({
-  origin: true,
+  origin: "https://e-commerce-website-test-2yiv-6wdafd471.vercel.app",
   credentials: true,
     //"http://localhost:5173",
-    //"https://e-commerce-website-test-2yiv-d6hrefiw0.vercel.app"
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
 
 
 // Middleware
