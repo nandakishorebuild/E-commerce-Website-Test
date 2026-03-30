@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import bcrypt from "bcryptjs";
@@ -8,16 +9,23 @@ import cookieParser from "cookie-parser";
 import db from "./db.js";
 
 const app = express();
-app.use(express.json());
-app.use(cookieParser());
 
+// CORS (FIRST)
 app.use(cors({
   origin: [
     "http://localhost:5173",
     "https://e-commerce-website-test-2yiv-d6hrefiw0.vercel.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+// Middleware
+app.use(express.json());
+app.use(cookieParser());
+
+
+
 
 // Register
 app.post("/register", async (req, res) => {
