@@ -13,12 +13,14 @@ const app = express();
 // CORS (FIRST)
 app.use(cors({
   origin: true,
+  credentials: true,
     //"http://localhost:5173",
     //"https://e-commerce-website-test-2yiv-d6hrefiw0.vercel.app"
-  
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+app.options("*", cors());
 
 // Middleware
 app.use(express.json());
@@ -106,8 +108,9 @@ app.post("/login", async (req, res) => {
     // Set cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "Lax",
+      secure: true,
+      sameSite: "None",
+      path: "/",
       maxAge: 24 * 60 * 60 * 1000
     });
 

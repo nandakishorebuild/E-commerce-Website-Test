@@ -14,7 +14,11 @@ const Login = () => {
   const response = await axios.post(
     "https://e-commerce-website-test.onrender.com/login",
     { username, password },
-    { withCredentials: true }
+    { withCredentials: true,
+      headers: {
+      "Content-Type": "application/json"
+    }
+     }
   );
 
   if (response.data.message === "Login successful") {
