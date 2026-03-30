@@ -109,6 +109,7 @@ app.post("/login", async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "None",
+      path: "/",
       maxAge: 24 * 60 * 60 * 1000
     });
 
@@ -142,8 +143,9 @@ app.get("/home", (req, res) => {
 app.post("/logout", (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
-    secure: false,
-    sameSite: "Lax"
+    secure: true,
+    sameSite: "None",
+    path: "/"
   });
   res.json({ message: "Logout successful" });
 });

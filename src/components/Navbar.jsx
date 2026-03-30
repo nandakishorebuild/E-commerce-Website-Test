@@ -8,11 +8,14 @@ const Navbar = () => {
   const { cartItems } = useCart();
   const totalItems = cartItems.reduce((sum, i) => sum + i.quantity, 0);
 
-  const handleLogout = () => {
-    axios
-      .post("https://e-commerce-website-test.onrender.com//logout", {}, { withCredentials: true })
-      .then(() => navigate("/login"))
-      .catch(() => alert("Logout failed"));
+  const handleLogout = async() => {
+    try {
+      await axios.post("https://e-commerce-website-test.onrender.com/logout", {}, { withCredentials: true });
+      navigate("/login");
+    } catch (error) {
+      alert("Logout failed");
+    }
+    
   };
 
   return (
