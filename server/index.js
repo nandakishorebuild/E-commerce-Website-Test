@@ -11,10 +11,21 @@ import db from "./db.js";
 const app = express();
 
 // CORS (FIRST)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://e-commerce-website-test-2yjv.vercel.app"
+];
+
 app.use(cors({
-  origin: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin) || origin.includes("vercel.app")) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
-  }));
+}));
   //"https://e-commerce-website-test-2yiv.vercel.app",
     //"http://localhost:5173",
 
