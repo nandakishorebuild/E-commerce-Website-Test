@@ -9,23 +9,25 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-  const response = await axios.post(
-    "https://e-commerce-website-test.onrender.com/login",
-    { username, password },
-    { withCredentials: true}
-  );
+  e.preventDefault();
 
-  if (response.data.message === "Login successful") {
-    setError(""); // clear error
+  try {
+    await axios.post(
+      "https://e-commerce-website-test.onrender.com/login",
+      { username, password },
+      { withCredentials: true }
+    );
+
+    // ✅ If request is successful → directly navigate
+    setError("");
     navigate("/home");
+
+  } catch (err) {
+    const message =
+      err.response?.data?.message || "Invalid credentials";
+    setError(message);
   }
-} catch (err) {
-  const message = err.response?.data?.message || "Invalid credentials";
-  setError(message); // ✅ store error instead of alert
-}
-  };
+};
 
   return (
     <div className="min-h-screen flex items-center justify-evenly bg-gradient-to-r from-blue-50 to-purple-100">
