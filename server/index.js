@@ -12,7 +12,7 @@ const app = express();
 
 // CORS (FIRST)
 app.use(cors({
-  origin: "https://e-commerce-website-test-2yiv-6wdafd471.vercel.app",
+  origin: "https://e-commerce-website-test-2yiv.vercel.app",
   credentials: true,
     //"http://localhost:5173",
 }));
