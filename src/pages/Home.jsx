@@ -44,7 +44,7 @@ const Home = () => {
           <img
             src="https://res.cloudinary.com/dal1ft5go/image/upload/f_auto,q_auto/1774374407743_neumhf"
             alt="shopping"
-            className="w-64 md:w-[600px] h-fit hover:scale-105 transition duration-300"
+            className="w-64 md:w-[700px] h-fit hover:scale-105 transition duration-300"
           />
         </div>
 
